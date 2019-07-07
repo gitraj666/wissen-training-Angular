@@ -1,0 +1,19 @@
+<form [formGroup]="reviewForm" (ngSubmit)="addUserReview()">
+  <div class="form-group">
+    <label>Author</label>
+    <input type="email" class="form-control" placeholder="  @email.com" formControlName="author" required>
+    <small class="form-text text-muted">We'll never share your name.</small>
+    <div *ngIf="isSubmitted && formControls.email.errors">
+      <div *ngIf="formControls.email.errors.required">Email is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Your Rating</label>&nbsp;
+    <input placeholder="Enter Text" formControlName="stars" placeholder=" Out of 5">
+  </div>
+  <div class="form-group">
+    <label>Your Review</label>&nbsp;
+    <textarea placeholder="Enter Text" formControlName="body"></textarea>
+  </div>
+  <button ng-disabled="reviewFrom.$invalid" class="btn btn-small btn-primary">Submit</button>
+</form>

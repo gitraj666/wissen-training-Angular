@@ -1,0 +1,15 @@
+<div *ngIf="!addReviewSelected">
+  <div class="alert alert-info" *ngFor="let review of reviews">
+    <span>
+      <i *ngFor="let _ of array(n)" style="color: orange;" class="fa fa-star">
+      </i>
+    </span>
+    &mdash;<span>{{review.author}}</span>
+    <hr />
+    <div>{{review.body}}</div>
+  </div>
+  <button class="btn btn-sm btn-info" (click)="addReview()">Add Review</button>
+</div>
+<div *ngIf="addReviewSelected">
+  <app-add-review [id]="id"></app-add-review>
+</div>

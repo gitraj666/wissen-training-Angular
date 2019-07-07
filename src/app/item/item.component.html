@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{ item.name | uppercase }}</h5>
+    <p class="card-text">{{ item.price | currency:item.currency:symbol }}</p>
+    <button (click)="handleBuy($event)" class="btn btn-sm btn-dark">buy</button>
+    &nbsp;<input size="2" readonly [value]="item.qty || 0" />
+
+    <img [src]="item.imgPath" class="card-img-top" alt="...">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" 
+          (click)="changeTab(1)" 
+          [ngClass]="isTabSelected(1) ? 'active':''">Description
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" 
+          (click)="changeTab(2)" 
+          [ngClass]="isTabSelected(2) ? 'active':''">Recipe
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" 
+          (click)="changeTab(3)" 
+          [ngClass]="isTabSelected(3) ? 'active':''">Review
+        </a>
+      </li>
+    </ul>
+
+
+    <div class="card-text" *ngIf="isTabSelected(1)">{{ item.description }}</div>
+    <div class="card-text" *ngIf="isTabSelected(2)"> Nothing So Far</div>
+    <div class="card-text" *ngIf="isTabSelected(3)">
+      <app-review [id]="item.id" [reviews]="reviews"></app-review>
+    </div>
+  </div>
+</div>

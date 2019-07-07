@@ -1,0 +1,4 @@
+<div class="item-list" *ngFor="let item of items" >
+  <app-item  [item]="item" [cartQty]="cart[item.id]?.qty">
+  </app-item><br>
+</div>
