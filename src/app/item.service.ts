@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
 
-  constructor() { }
+  constructor(private _http: HttpClient) { }
 
   items = [
     {
@@ -31,12 +32,15 @@ export class ItemService {
     },
   ];
   reviews = [
-    [{ author: 'who1@mail.com', stars: 5, body: 'sample-review-1' }],
+    [{ author: 'who1@mail.com', stars: 3, body: 'sample-review-1' }],
     [{ author: 'who2@mail.com', stars: 5, body: 'sample-review-1' }]
   ];
 
   getItems() {
-    return this.items;
+    const apiUrl = 'http://localhost:8191/api/items';
+    // console.log(this._http.get(apiUrl));
+    return this._http.get(apiUrl);  // async
+    // return this.items;
   }
 
   addReview(id, newReview) {
@@ -45,10 +49,12 @@ export class ItemService {
       stars: newReview.stars,
       body: newReview.body
     });
-    //console.log(this.reviews);
+    // console.log(this.reviews);
   }
 
   getReviews(id) {
-    return this.reviews[--id];
+    const apiUrl = `http://localhost:8181/api/products/${id}/reviews`;
+    return this._http.get(apiUrl); // async
+    // return this.reviews[--id];
   }
 }

@@ -16,6 +16,7 @@ export class ReviewComponent implements OnInit {
   }
 
   array(n) {
+   // console.log(n);
     return Array(n);
   }
 

@@ -15,7 +15,10 @@ export class ItemListComponent implements OnInit {
   constructor(private itemService: ItemService, private cartService: CartService) { }
 
   ngOnInit() {
-    this.items = this.itemService.getItems();
+    this.itemService.getItems()
+      .subscribe((response: any) => {
+        this.items = response;
+      });
     this.cart = this.cartService.getCart();
 
     this.cartService.getCartStream()

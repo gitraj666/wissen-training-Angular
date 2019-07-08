@@ -31,7 +31,7 @@ export class AddReviewComponent implements OnInit {
     const tokens = this.reviewForm.value.body.split(' ');
     tokens.forEach(token => {
       if (words.includes(token)) {
-        newBody += '***';
+        newBody += '****';
       } else {
         newBody += token;
       }

@@ -1,7 +1,7 @@
 <div *ngIf="!addReviewSelected">
   <div class="alert alert-info" *ngFor="let review of reviews">
     <span>
-      <i *ngFor="let _ of array(n)" style="color: orange;" class="fa fa-star">
+      <i *ngFor="let i of array(review.stars)" style="color: orange;" class="fa fa-star"> {{i}}
       </i>
     </span>
     &mdash;<span>{{review.author}}</span>
